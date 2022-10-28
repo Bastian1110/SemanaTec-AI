@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const app = express();
 const sequelize = require("./utils/database");
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
+app.use(cors());
 
 app.use(modeloIARoutes);
 app.use("/usuario", databaseRoutes);
